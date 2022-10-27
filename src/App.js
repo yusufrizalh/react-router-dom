@@ -1,24 +1,72 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { Container, Button, NavbarBrand, Navbar, Nav, NavItem, NavLink } from "reactstrap";
+
+// import semua halaman yg akan ditampilkan
+import HomePage from "./pages/HomePage.js";
+import AboutPage from "./pages/AboutPage.js";
+import GalleryPage from "./pages/GalleryPage.js";
+import ContactPage from "./pages/ContactPage.js";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <div className="py-0 px-0">
+        <Router>
+          {/* membuat navbar */}
+          <Navbar color="dark" dark fixed="top">
+            <NavbarBrand href="/">
+              <img
+                alt="logo"
+                src="https://cdn-icons-png.flaticon.com/512/2761/2761032.png"
+                style={{
+                  height: 40,
+                  width: 40,
+                }}
+              />{" "}
+              &nbsp; React Router
+            </NavbarBrand>
+            <Nav className="me-auto">
+              <NavItem>
+                <NavLink>
+                  <Link to="/">
+                    <button className="btn text-white">Home</button>
+                  </Link>
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink>
+                  <Link to="/about">
+                    <button className="btn text-white">About</button>
+                  </Link>
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink>
+                  <Link to="/gallery">
+                    <button className="btn text-white">Gallery</button>
+                  </Link>
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink>
+                  <Link to="/contact">
+                    <button className="btn text-white">Contact</button>
+                  </Link>
+                </NavLink>
+              </NavItem>
+            </Nav>
+          </Navbar>
+          {/* semua routes harus didaftarkan disini */}
+          <Routes>
+            <Route exact path="/" element={<HomePage />} />
+            <Route exact path="/about" element={<AboutPage />} />
+            <Route exact path="/gallery" element={<GalleryPage />} />
+            <Route exact path="/contact" element={<ContactPage />} />
+          </Routes>
+        </Router>
+      </div>
+    </Container>
   );
 }
 
