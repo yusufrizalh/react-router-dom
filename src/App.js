@@ -1,12 +1,21 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import { Container, Button, NavbarBrand, Navbar, Nav, NavItem, NavLink } from "reactstrap";
+import {
+  Container,
+  Button,
+  NavbarBrand,
+  Navbar,
+  Nav,
+  NavItem,
+  NavLink,
+} from "reactstrap";
 
 // import semua halaman yg akan ditampilkan
 import HomePage from "./pages/HomePage.js";
 import AboutPage from "./pages/AboutPage.js";
 import GalleryPage from "./pages/GalleryPage.js";
 import ContactPage from "./pages/ContactPage.js";
+import ChartPage from "./pages/ChartPage.js";
 
 function App() {
   return (
@@ -55,6 +64,13 @@ function App() {
                   </Link>
                 </NavLink>
               </NavItem>
+              <NavItem>
+                <NavLink>
+                  <Link to="/chart">
+                    <button className="btn text-white">Chart</button>
+                  </Link>
+                </NavLink>
+              </NavItem>
             </Nav>
           </Navbar>
           {/* semua routes harus didaftarkan disini */}
@@ -63,6 +79,7 @@ function App() {
             <Route exact path="/about" element={<AboutPage />} />
             <Route exact path="/gallery" element={<GalleryPage />} />
             <Route exact path="/contact" element={<ContactPage />} />
+            <Route exact path="/chart" element={<ChartPage />} />
           </Routes>
         </Router>
       </div>
